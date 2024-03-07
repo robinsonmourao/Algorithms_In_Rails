@@ -5,7 +5,7 @@ class AlgorithmsController < ApplicationController
     #     render :returns
     # end
 
-    def test_list
+    def lists
         @name = "Robinson"
 
         @possui_son = @name.include? "son"
@@ -19,16 +19,15 @@ class AlgorithmsController < ApplicationController
         #      = params[:<valor inserido no formulario>]
         @value = params[:value]        
 
-        @output = eh_palindromo(@value)
-
-        return @output
+        @palindromo = eh_palindromo(@value)
+        @maior_idade = maior_de_idade(@value)
     end
 
     def eh_palindromo(value)
 
-        if value.strip.empty?
+        if value.nil? || value.strip.empty?
             return "Favor inserir algum valor!"
-        end
+          end
 
         value = value.to_s
         @tamanho_valor = value.length
@@ -47,6 +46,23 @@ class AlgorithmsController < ApplicationController
             return false
         end
     end
+
+    def maior_de_idade(value)
+
+        if value.nil? || value.strip.empty?
+            return "Favor inserir algum valor!"
+        end
+
+        value = value.to_i
+        if (value<18)
+            return "Usuário ainda é menor de idade!"
+        else
+            return "Usuário é maior de idade"
+        end
+    end
+    
+
+    private
 
     def eh_par(value)
         value = value.to_s
