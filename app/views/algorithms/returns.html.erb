@@ -1,0 +1,12 @@
+<%= form_with(url: algorithms_returns_path, method: "get") do |form| %>
+    <div class="field">
+      <%= form.label :value %>
+      <%= form.text_field :value %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Calculate" %>
+    </div>
+  <% end %>
+
+
+<%= @output %>
